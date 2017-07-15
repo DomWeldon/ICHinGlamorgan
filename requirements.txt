@@ -1,0 +1,4 @@
+termcolor
+python-twitter
+beautifulsoup4
+pandas
