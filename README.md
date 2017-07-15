@@ -36,6 +36,8 @@ _In the case of the `urdd2017` search, one tweet, which was created by the resea
 
 * The tweets were stored as JSON, and then converted to CSV using the `pandas` data handling library.
 * Tweets were further filtered to cover only the period from one week before the event, to one week after it.
+* The fields extracted for a tweet were: `text` of the tweet, Twitter's `tweet_id`, time `created_at`, number of `favourites`, number of `retweets`, Twitter's `user_id`, the user's public `user_name` and `user_screen_name`.
+* Tweets containing images were detected using a regular expression, the URL of the image was thus extracted and added as an extra field to the data.
 
 ### Language Detection and Summary Statistics
 
