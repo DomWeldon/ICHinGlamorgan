@@ -261,7 +261,7 @@ class TwitterSlicer(TwitterSearch):
 if __name__ == '__main__':
     log.basicConfig(level=log.INFO)
 
-    search_query = "tafwyl"
+    search_query = "tafwyl" # or urdd2017
     rate_delay_seconds = 0
     error_delay_seconds = 5
 
