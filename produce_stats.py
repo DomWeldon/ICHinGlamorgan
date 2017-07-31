@@ -17,5 +17,5 @@ for f in Path('data/').glob('detected_*.csv'):
     df = pd.read_csv(f)
     print(
         colored(f.name, cols.info),
-        colored(str({ l: len(df[df['detected_language'] == l]) for l in ['cy', 'en', 'unknown'] }), cols.success)
+        colored(str({ l: len(df[df['detected_language'] == l]) for l in set(df['detected_language']) }), cols.success)
     )

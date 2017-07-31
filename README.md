@@ -41,18 +41,42 @@ _In the case of the `urdd2017` search, one tweet, which was created by the resea
 
 ### Language Detection and Summary Statistics
 
-**Although this is written in the past tense, this work will be conducted in the next day or so (when I get time), and so is likely to change depending on the properties of the data.**
+* A python-ported version of [Google's language detection algorithm](https://github.com/Mimino666/langdetect) termed `langdetect` was used to classify tweets according to the language they were written in. The `langdetect` algorithm calculated a set of probabilities that any given tweet was written in a particular language. DW's program, `lang_detect.py` then classified a tweet as being written in that language only if:
 
-* A python-ported version of [Google's language detection algorithm](https://github.com/Mimino666/langdetect) termed langdetect was used to classify tweets as being written in either Welsh (`CY`), English (`EN`), or unknown (`U` - to cover cases where language could not be detected within the defined probability range, or for tweets which were most likely in a language other than English or Welsh).
-* The probability threshold was set at 95% confidence.
-* The following measures were produced:
+  * a) the tweet was assigned a probability of over 0.95 for being written in that language
+  * b) the tweet was not assigned a probability of over 0.95 for being written in any other language
 
-  * Mean number of tweets per day for: the whole period covered, the event itself, the week before the event and the week after.
-  * Differences between the means were compared using the XXX (Chi Squared??) test with a confidence threshold of 0.95.
-  * The percentage of tweets in English and Welsh for each event were compared and compared using the same method.
-  * The mean number of retweets for a tweet in English and in Welsh were compared using the same method.
-
+  tweets which could not be classified into any language within the defined probability range were classified as `unknown`.
 
 ## Results
 
-Coming soon to a repo near you...
+The total number of tweets in each language for each term is recorded below as a python dictionary.
+
+    total_tweets = {
+      'tafwyl': {
+          'pt': 4,
+          'vi': 4,
+          'af': 2,
+          'ca': 1,
+          'da': 3,
+          'hr': 1,
+          'so': 2,
+          'hu': 2,
+          'fi': 1,
+          'unknown': 720,
+          'it': 3,
+          'en': 1407,
+          'de': 3,
+          'cy': 2838,
+          'sw': 3,
+          'pl': 2,
+          'nl': 1,
+          'sv': 1,
+          'fr': 3
+      },
+      'urd2017': {
+          'unknown': 670,
+          'cy': 3407,
+          'en': 812
+       },
+    }
