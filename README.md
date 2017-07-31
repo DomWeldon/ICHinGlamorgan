@@ -13,7 +13,7 @@ This work was conducted by Dom Weldon<sup>1</sup> and Amy Dolben<sup>2</sup>.
 
 * AD designed the research and data to be collected.
 * DW was responsible solely for the technical work to extract the data and the code to combine it with Google's language detection algorithm to produce results (as CSV files), which were then passed to AD for qualitative analysis.
-* DW used `pandas` to provide summary statistics to AD and created charts which were pased to AD using `matplotlib`.
+* DW used `pandas` to provide a summary count of the number of tweets in each language which were passed to AD alongside raw CSV files, which AD used to perform further qualitative and quantitative analysis.
 
 DW's research is funded by a Collaborative Doctoral Award from the Arts and Humanities Research Council in collaboration with BT and the Science Museum Group.
 
@@ -37,7 +37,6 @@ _In the case of the `urdd2017` search, one tweet, which was created by the resea
 * The tweets were stored as JSON, and then converted to CSV using the `pandas` data handling library.
 * Tweets were further filtered to cover only the period from one week before the event, to one week after it.
 * The fields extracted for a tweet were: `text` of the tweet, Twitter's `tweet_id`, time `created_at`, number of `favourites`, number of `retweets`, Twitter's `user_id`, the user's public `user_name` and `user_screen_name`.
-* Tweets containing images were detected using a regular expression, the URL of the image was thus extracted and added as an extra field to the data.
 
 ### Language Detection and Summary Statistics
 
@@ -51,6 +50,8 @@ _In the case of the `urdd2017` search, one tweet, which was created by the resea
 ## Results
 
 The total number of tweets in each language for each term is recorded below as a python dictionary.
+
+These results suggest that some outlier tweets may be erroneously assigned to another language by the detection algorithm (e.g., the tweet "@CylchgrawnGolwg @ARGRPH @Tafwyl Nice joke lads" is not in Hungarian, no matter how much the unusual combination of words and letters in the twitter handles may make it appear so). Such outliers can be further assessed by AD.
 
     total_tweets = {
       'tafwyl': {
